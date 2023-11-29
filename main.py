@@ -40,7 +40,7 @@ def generate():
   img_str = "data:image/png;base64," + str(img_str)[2:-1]
 
   #generate text
-  prompt2text = f"Convincing text to sell {prompt}"
+  prompt2text = f"Q: How can I convince a customer to buy {prompt}? Give the rationale before answering."
   input_ids = tokenizer(prompt2text, return_tensors="pt").input_ids.to("cuda")
   generated_output = model.generate(input_ids, do_sample=True, temperature=1.0, max_length=2500, num_return_sequences=1)
   generated_text = tokenizer.decode(generated_output[0], skip_special_tokens=True)
