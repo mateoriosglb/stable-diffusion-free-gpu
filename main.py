@@ -8,7 +8,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import base64
 from io import BytesIO
 
-# Load model
+# Load models
 tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
 model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small").to("cuda")
 
@@ -31,7 +31,8 @@ def generate():
   print(f"Generating an image of {prompt}")
 
   # generate image
-  image = pipe(prompt).images[0]
+  prompt2image = f"Landing page of {prompt}"
+  image = pipe(prompt2image).images[0]
   print("Image generated! Converting image ...")
   buffered = BytesIO()
   image.save(buffered, format="PNG")
@@ -39,7 +40,8 @@ def generate():
   img_str = "data:image/png;base64," + str(img_str)[2:-1]
 
   #generate text
-  input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to("cuda")
+  prompt2text = f"Convincing text to sell {prompt}"
+  input_ids = tokenizer(prompt2text, return_tensors="pt").input_ids.to("cuda")
   generated_output = model.generate(input_ids, do_sample=True, temperature=1.0, max_length=2500, num_return_sequences=1)
   generated_text = tokenizer.decode(generated_output[0], skip_special_tokens=True)
 
