@@ -9,10 +9,13 @@ import base64
 from io import BytesIO
 
 # Load models
+# Tokenizer: flan-t5-xl, flan-t5-small
 tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
 model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small").to("cuda")
 
-pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", revision="fp16", torch_dtype=torch.float16)
+# Text2Image: runwayml/stable-diffusion-v1-5, stabilityai/stable-diffusion-2-1
+pipe = StableDiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2-1",
+                                               revision="fp16", torch_dtype=torch.float16)
 pipe.to("cuda")
 
 # Start flask app and set to ngrok
@@ -42,7 +45,9 @@ def generate():
   #generate text
   prompt2text = f"Q: How can I convince a customer to buy {prompt}? Give the rationale before answering."
   input_ids = tokenizer(prompt2text, return_tensors="pt").input_ids.to("cuda")
-  generated_output = model.generate(input_ids, do_sample=True, temperature=1.0, max_length=2500, num_return_sequences=1)
+  generated_output = model.generate(input_ids, do_sample=True,
+                                    temperature=1.0, max_length=2500,
+                                    num_return_sequences=1)
   generated_text = tokenizer.decode(generated_output[0], skip_special_tokens=True)
 
   print("Sending image and text ...")
