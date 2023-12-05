@@ -1,3 +1,13 @@
+fetch('parameters.json')
+  .then(response => response.json())
+  .then(data => {
+    const text2textModel = data.models.text2text;
+    const text2imageModel = data.models.text2image;
+
+    // Replace the placeholder text with the actual model names
+    document.querySelector('h3.sd-title').textContent = text2imageModel;
+    document.querySelector('h3.flan-title').textContent = text2textModel;
+  });
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,11 +61,11 @@
       </div>
       <div class="row">
           <div class="col-lg-6">
-            <h3>Stable Diffusion v1-5</h3>
+            <h3>{{ text2imageModel }}</h3>
             <img src="{{ generated_image|default("...", true) }}" class="mainImg" alt="Generated Image">
           </div>
           <div class="col-lg-6">
-              <h3>Google flan-t5-small</h3>
+              <h3>{{ text2textModel }}</h3>
               <p>{{ generated_text|default("...") }}</p>
           </div>
       </div>
