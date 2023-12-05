@@ -42,23 +42,16 @@
 <!-- Icons Grid-->
 <section class="features-icons bg-light text-center">
   <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2>
-            Prompt: {{ prompt|default("...") }}
-          </h2>
-        </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>{{ t2i_model }}</h3>
+        <img src="{{ generated_image|default("...", true) }}" class="mainImg" alt="Generated Image">
       </div>
-      <div class="row">
-          <div class="col-lg-6">
-            <h3>{{ t2i_model }}</h3>
-            <img src="{{ generated_image|default("...", true) }}" class="mainImg" alt="Generated Image">
-          </div>
-          <div class="col-lg-6">
-              <h3>{{ t2t_model }}</h3>
-              <p>{{ generated_text|default("...") }}</p>
-          </div>
+      <div class="col-lg-6">
+        <h3>{{ t2t_model }}</h3>
+        <p>{{ generated_text|default("...") }}</p>
       </div>
+    </div>
   </div>
 </section>
 </body>
