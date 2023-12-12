@@ -1,0 +1,25 @@
+.title {
+    text-align: center;
+}
+
+.propmt-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    max-width: min-content;
+}
+
+
+.custom-btn {
+    text-align: center;
+    margin-top: 20px;
+}
