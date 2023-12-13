@@ -2,7 +2,7 @@
 
 Run a Flask app with Stable Diffusion using Google Colab and ngrok.
 
-Compare Generative AI App
+App to generate landingpage through Stable Diffusion
 
 ## Instructions
 
