@@ -44,9 +44,10 @@
   <div class="container">
     <div class="image-container ">
       <div>
-        <h3 class="title">{{ t2i_model }}</h3>
+        <h3 class="title"> {{ t2i_model }}</h3>
         <!-- <img src="{{ generated_image|default("...", true) }}" class="mainImg" alt="Generated Image"> -->
-        <img src="https://placehold.co/600x400" class="image" alt="Generated Image">
+        <img src="{{ generated_image|https://placehold.co/600x400 }}" class="mainImg" alt="Generated Image">
+        <!-- <img src="https://placehold.co/600x400" class="image" alt="Generated Image"> -->
       </div>
     </div>
   </div>
