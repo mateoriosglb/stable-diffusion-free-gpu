@@ -1,4 +1,4 @@
-# Free GPU App
+# Landing pages generator
 
 Run a Flask app with Stable Diffusion using Google Colab and ngrok.
 
