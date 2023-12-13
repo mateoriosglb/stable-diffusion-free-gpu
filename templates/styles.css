@@ -16,8 +16,8 @@
 
 .image {
     max-width: min-content;
+    padding-top: 20px;
 }
-
 
 .custom-btn {
     text-align: center;
