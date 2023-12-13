@@ -1,6 +1,6 @@
 {
     "models": {
       "text2text": "google/flan-t5-small",
-      "text2image": "stabilityai/stable-diffusion-2-1"
+      "text2image": "mriosque/landingpages-test-01"
     }
 }
