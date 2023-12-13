@@ -67,8 +67,8 @@ def generate():
 
   print("Sending image and text ...")
  
-  return render_template('index.html', t2t_model=text2text_model, t2i_model=text2image_model, 
-                         generated_image=img_str, generated_text=generated_text, prompt=prompt)
+  return render_template('index.html', t2i_model=text2image_model, 
+                         generated_image=img_str, prompt=prompt)
 
 if __name__ == '__main__':
     app.run()
